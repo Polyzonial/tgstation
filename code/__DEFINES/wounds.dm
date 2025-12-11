@@ -48,6 +48,8 @@ GLOBAL_LIST_INIT(wound_severities_chronological, list(
 #define WOUND_PIERCE "wound_pierce"
 /// any concentrated burn attack (lasers really). rolls for burning wounds
 #define WOUND_BURN "wound_burn"
+// RECLAMATION 13 EDIT
+#define WOUND_FROST "wound_frost"
 
 /// Mainly a define used for wound_pregen_data, if a pregen data instance expects this, it will accept any and all wound types, even none at all
 #define WOUND_ALL "wound_all"
@@ -127,6 +129,8 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 #define WOUND_SERIES_BONE_BLUNT_BASIC "wound_series_bone_blunt_basic"
 /// T1-T3 Basic burn wounds. Requires flesh. From: burns.dm
 #define WOUND_SERIES_FLESH_BURN_BASIC "wound_series_flesh_burn_basic"
+/// T1-T3 frostbite wounds, requires flesh. From: frostbites.dm
+#define WOUND_SERIES_FLESH_FROST_BASIC "wound_series_flesh_frost_basic"
 /// T1-T3 Bleeding puncture wounds. Requires flesh. Can cause bleeding, but doesn't require it. From: pierce.dm
 #define WOUND_SERIES_FLESH_PUNCTURE_BLEED "wound_series_flesh_puncture_bleed"
 /// Generic loss wounds. See loss.dm
@@ -216,6 +220,9 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	WOUND_PIERCE = list(
 		WOUND_SERIES_FLESH_PUNCTURE_BLEED
 	),
+	WOUND_FROST = list(
+		WOUND_SERIES_FLESH_FROST_BASIC
+	)
 ))
 
 /// Used in get_corresponding_wound_type(): Will pick the highest severity wound out of severity_min and severity_max

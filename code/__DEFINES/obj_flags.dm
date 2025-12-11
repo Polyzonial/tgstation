@@ -62,6 +62,7 @@
 /// SUIT and HEAD items which stop pressure damage.
 /// To stop you taking all pressure damage you must have both a suit and head item with this flag.
 #define STOPSPRESSUREDAMAGE (1<<1)
+///Reclaimation 13 Edit - Begin
 /// blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY!
 #define BLOCK_GAS_SMOKE_EFFECT (1<<2)
 /// mask allows internals

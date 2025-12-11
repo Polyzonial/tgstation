@@ -1241,18 +1241,34 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/is_hulk = HAS_TRAIT(humi, TRAIT_HULK)
 
 	var/cold_damage_limit = bodytemp_cold_damage_limit + (is_hulk ? BODYTEMP_HULK_COLD_DAMAGE_LIMIT_MODIFIER : 0)
+		//If the body temp is below the wound limit start adding exposure stacks
 
+	if(humi.bodytemperature < COLD_DAMAGE_LEVEL_1)
+		humi.cold_exposure_stacks = min(humi.cold_exposure_stacks + (0.5 * seconds_per_tick), 40)
+	else //When below the wound limit, reduce the exposure stacks fast.
+		humi.cold_exposure_stacks = max(humi.cold_exposure_stacks - (2 * seconds_per_tick), 0)
+
+	//when exposure stacks are greater then 10 + rand20 try to apply wounds and reset stacks
+	if(humi.cold_exposure_stacks > (10 + rand(0, 20)))
+		apply_frost_wounds(humi, seconds_per_tick, times_fired)
+		humi.cold_exposure_stacks = 0
+	// Polyzonial Edit begins - This is fucking nasty, I should really do it with signals but I'm tired and want something done.
+	// This is basically just a copy of heat exposure, but frostbite wounds are more debilitation than damage
+	//when exposure stacks are greater then 10 + rand20 try to apply wounds and reset stacks
+	// TO DO, make this only apply to exposed limbs
 	if(humi.coretemperature < cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
 		var/damage_type = is_hulk ? BRUTE : BURN // Why?
 		var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
+		var/limb_to_chill = (humi.get_random_valid_zone)
+		if(limb_to_chill)
+			return
 		// Can't be a switch due to http://www.byond.com/forum/post/2750423
 		if(humi.coretemperature in 201 to cold_damage_limit)
-			humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSE)
+			humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSE,def_zone = limb_to_chill)
 		else if(humi.coretemperature in 120 to 200)
-			humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSE)
+			humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSEE,def_zone = limb_to_chill)
 		else
-			humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSE)
-
+			humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSEE,def_zone = limb_to_chill)
 /**
  * Used to apply burn wounds on random limbs
  *
@@ -1261,6 +1277,21 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * vars:
  * * humi (required) The mob we will targeting
  */
+
+/datum/species/proc/apply_frost_wounds(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
+	if(HAS_TRAIT(humi, TRAIT_RESISTCOLD))
+		return
+	// If our body temp is too high for a wound
+	if(humi.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT)
+		return
+	var/obj/item/bodypart/bodypart = pick(humi.bodyparts)
+	var/datum/wound/existing_frost
+	for (var/datum/wound/iterated_wound as anything in bodypart.wounds)
+		var/datum/wound_pregen_data/pregen_data = iterated_wound.get_pregen_data()
+		if (pregen_data.wound_series in GLOB.wounding_types_to_series[WOUND_FROST])
+			existing_frost = iterated_wound
+			break
+
 /datum/species/proc/apply_burn_wounds(mob/living/carbon/human/humi, seconds_per_tick, times_fired)
 	// If we are resistant to heat exit
 	if(HAS_TRAIT(humi, TRAIT_RESISTHEAT))
@@ -1270,7 +1301,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(humi.bodytemperature < BODYTEMP_HEAT_WOUND_LIMIT)
 		return
 
-	// Lets pick a random body part and check for an existing burn
+	// Lets pick a random exposed body part and check for an existing burn
 	var/obj/item/bodypart/bodypart = pick(humi.bodyparts)
 	var/datum/wound/existing_burn
 	for (var/datum/wound/iterated_wound as anything in bodypart.wounds)
