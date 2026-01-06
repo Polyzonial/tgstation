@@ -49,6 +49,9 @@
 	examine_desc = "skin is red and covered in blisters"
 	severity = WOUND_SEVERITY_MODERATE
 	damage_multiplier_penalty = 1.1
+	interaction_efficiency_penalty = 1.3
+	limp_slowdown = 3
+	limp_chance = 20
 	disabling = FALSE
 
 
@@ -68,7 +71,10 @@
 	examine_desc = "the flesh is pale and stiff."
 	severity = WOUND_SEVERITY_SEVERE
 	damage_multiplier_penalty = 1.3
-	disabling = TRUE
+	interaction_efficiency_penalty = 2
+	limp_slowdown = 6
+	limp_chance = 33
+	disabling = FALSE
 
 /datum/wound_pregen_data/frostbite/severe
 	wound_path_to_generate = /datum/wound/frostbite/flesh/moderate
@@ -84,8 +90,10 @@
 	treat_text_short = "Amputate, rewarm to reduce bleeding."
 	examine_desc = "is frozen solid and pale."
 	severity = WOUND_SEVERITY_SEVERE
-	damage_multiplier_penalty = 1.3
-	disabling = TRUE
+	damage_multiplier_penalty = 2
+	interaction_efficiency_penalty = 4
+	limp_slowdown = 9
+	limp_chance = 60
 
 //if we are above the temperature we would recieve this wound at, begin to rewarm, this will cause intermittent pain
 //if we are below the temperature we would recieve this wound, start escalating to the next one
