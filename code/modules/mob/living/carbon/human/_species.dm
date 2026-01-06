@@ -1281,6 +1281,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	// If our body temp is too high for a wound
 	if(humi.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT)
 		return
+	//randomly select a limb and give it a frost wound
 	var/obj/item/bodypart/bodypart = pick(humi.bodyparts)
 	var/datum/wound/existing_frost
 	for (var/datum/wound/iterated_wound as anything in bodypart.wounds)

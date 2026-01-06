@@ -1,5 +1,4 @@
 /datum/wound_pregen_data/frostbite
-	wound_path_to_generate = /datum/wound/cranial_fissure
 	required_limb_biostate = BIO_FLESH
 	can_be_randomly_generated = FALSE
 	duplicates_allowed = FALSE
