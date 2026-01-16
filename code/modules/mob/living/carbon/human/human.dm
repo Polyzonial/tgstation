@@ -24,6 +24,7 @@
 	. = ..()
 
 	AddComponent(/datum/component/personal_crafting, ui_human_crafting)
+	AddComponent(/datum/component/freezing)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 1, -6)
 	AddComponent(/datum/component/bloodysoles/feet)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
