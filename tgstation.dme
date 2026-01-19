@@ -204,6 +204,7 @@
 #include "code\__DEFINES\reactions.dm"
 #include "code\__DEFINES\reagents.dm"
 #include "code\__DEFINES\reagents_specific_heat.dm"
+#include "code\__DEFINES\reclamation.dm"
 #include "code\__DEFINES\regex.dm"
 #include "code\__DEFINES\religion.dm"
 #include "code\__DEFINES\research.dm"
@@ -1363,7 +1364,6 @@
 #include "code\datums\components\crafting\doors.dm"
 #include "code\datums\components\crafting\entertainment.dm"
 #include "code\datums\components\crafting\equipment.dm"
-#include "code\datums\components\crafting\freezing.dm"
 #include "code\datums\components\crafting\furniture.dm"
 #include "code\datums\components\crafting\guncrafting.dm"
 #include "code\datums\components\crafting\melee_weapon.dm"
@@ -6762,4 +6762,6 @@
 #include "interface\fonts\spess_font.dm"
 #include "interface\fonts\tiny_unicode.dm"
 #include "interface\fonts\vcr_osd_mono.dm"
+#include "reclamation\code\_onclick\hud\alert.dm"
+#include "reclamation\code\datums\components\freezing.dm"
 // END_INCLUDE
