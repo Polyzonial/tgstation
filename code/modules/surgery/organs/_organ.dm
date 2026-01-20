@@ -33,6 +33,10 @@
 	var/low_threshold = STANDARD_ORGAN_THRESHOLD * 0.1 //when minor organ damage occurs
 	var/severe_cooldown //cooldown for severe effects, used for synthetic organ emp effects.
 
+//RECLAMATION 13 EDIT
+	/// Weighted hit chance of the organ, determining how likely it is to be hit relative to other organs.
+	var/organ_hit_weight = 20
+
 	// Organ variables for determining what we alert the owner with when they pass/clear the damage thresholds
 	var/prev_damage = 0
 	var/low_threshold_passed

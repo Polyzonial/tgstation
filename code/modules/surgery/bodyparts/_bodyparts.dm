@@ -535,6 +535,9 @@
 
 	brute *= wound_damage_multiplier
 	burn *= wound_damage_multiplier
+//RECLAMATION EDIT
+	organ_attack(brute , burn, sharpness)
+
 
 	/*
 	// START WOUND HANDLING

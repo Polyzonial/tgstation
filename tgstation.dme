@@ -6761,4 +6761,5 @@
 #include "interface\fonts\spess_font.dm"
 #include "interface\fonts\tiny_unicode.dm"
 #include "interface\fonts\vcr_osd_mono.dm"
+#include "reclamation 13\modules\bodyparts\_bodyparts.dm"
 // END_INCLUDE
