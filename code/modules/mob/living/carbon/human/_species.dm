@@ -1243,22 +1243,25 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/cold_damage_limit = bodytemp_cold_damage_limit + (is_hulk ? BODYTEMP_HULK_COLD_DAMAGE_LIMIT_MODIFIER : 0)
 
 	if(humi.coretemperature < cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
-		var/damage_type = is_hulk ? BRUTE : BURN // Why?
-		var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
+		//var/damage_type = is_hulk ? BRUTE : BURN // Why?
+		//var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
 		var/warmth_remove = 0
 		// Can't be a switch due to http://www.byond.com/forum/post/2750423
 		if(humi.coretemperature in 201 to cold_damage_limit)
 			//humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSE)
 			warmth_remove = 2
-			SEND_SIGNAL(src, WARMTH_ALTER, warmth_remove)
+			SEND_SIGNAL(humi, WARMTH_ALTER, warmth_remove)
+			to_chat(humi, span_warning("1254"))
 		else if(humi.coretemperature in 120 to 200)
 			//humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSE)
 			warmth_remove = 4
-			SEND_SIGNAL(src, WARMTH_ALTER, warmth_remove)
+			SEND_SIGNAL(humi, WARMTH_ALTER, warmth_remove)
+			to_chat(humi, span_warning("1259"))
 		else
 			//humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod * seconds_per_tick, damage_type, wound_clothing = FALSE)
 			warmth_remove = 6
-			SEND_SIGNAL(src, WARMTH_ALTER, warmth_remove)
+			SEND_SIGNAL(humi, WARMTH_ALTER, warmth_remove)
+			to_chat(humi, span_warning("1263"))
 
 /**
  * Used to apply burn wounds on random limbs

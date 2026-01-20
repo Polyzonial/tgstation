@@ -1,3 +1,5 @@
+#define FREEZING_ALERT "freezing_alert"
+
 /atom/movable/screen/alert/freezing
 	icon = 'icons/hud/screen_alert.dmi'
 	icon_state = "template"
