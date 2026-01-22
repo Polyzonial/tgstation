@@ -1191,6 +1191,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		humi.remove_movespeed_modifier(/datum/movespeed_modifier/cold)
 		humi.clear_mood_event("cold")
 		humi.clear_mood_event("hot")
+		var/warmth_regen = 1
+		SEND_SIGNAL(humi, WARMTH_ALTER, warmth_regen)
 
 	// Store the old bodytemp for future checking
 	humi.old_bodytemperature = bodytemp
