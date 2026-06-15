@@ -6765,4 +6765,5 @@
 #include "interface\fonts\vcr_osd_mono.dm"
 #include "reclamation\code\_onclick\hud\alert.dm"
 #include "reclamation\code\datums\components\freezing.dm"
+#include "reclamation\code\datums\wounds\frostbites.dm"
 // END_INCLUDE

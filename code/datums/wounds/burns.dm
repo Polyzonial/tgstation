@@ -130,7 +130,7 @@
 
 		if(WOUND_INFECTION_SEPTIC to INFINITY)
 			if(SPT_PROB(0.5 * infestation, seconds_per_tick))
-				strikes_to_lose_limb--
+				strikes_to_lose_limb-- //Minus one
 				switch(strikes_to_lose_limb)
 					if(2 to INFINITY)
 						to_chat(victim, span_deadsay("<b>The infection in your [limb.plaintext_zone] is literally dripping off, you feel horrible!</b>"))

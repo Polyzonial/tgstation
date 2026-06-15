@@ -48,6 +48,8 @@ GLOBAL_LIST_INIT(wound_severities_chronological, list(
 #define WOUND_PIERCE "wound_pierce"
 /// any concentrated burn attack (lasers really). rolls for burning wounds
 #define WOUND_BURN "wound_burn"
+/// Rec 13 Edit - Freezing wounds and possibly cryo weapons.
+#define WOUND_FREEZE "wound_freeze"
 
 /// Mainly a define used for wound_pregen_data, if a pregen data instance expects this, it will accept any and all wound types, even none at all
 #define WOUND_ALL "wound_all"
@@ -133,6 +135,8 @@ GLOBAL_LIST_INIT(bio_state_anatomy, list(
 #define WOUND_SERIES_LOSS_BASIC "wound_series_loss_basic"
 /// Cranial fissure wound.
 #define WOUND_SERIES_CRANIAL_FISSURE "wound_series_cranial_fissure"
+// Rec-13 edit, frostbite wounds
+#define WOUND_SERIES_FLESH_FROST_BASIC "wound_series_flesh_frost_basic"
 
 /// A assoc list of (wound typepath -> wound_pregen_data instance). Every wound should have a pregen data.
 GLOBAL_LIST_INIT_TYPED(all_wound_pregen_data, /datum/wound_pregen_data, generate_wound_static_data())
@@ -215,6 +219,9 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	),
 	WOUND_PIERCE = list(
 		WOUND_SERIES_FLESH_PUNCTURE_BLEED
+	),
+	WOUND_FREEZE = list(
+		WOUND_SERIES_FLESH_FROST_BASIC,
 	),
 ))
 
