@@ -228,6 +228,15 @@
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory(null, src)
+	inv_box.name = "shirt"
+	inv_box.icon = ui_style
+	inv_box.icon_state = "uniform"
+	inv_box.icon_full = "template"
+	inv_box.screen_loc = ui_shirt
+	inv_box.slot_id = ITEM_SLOT_SHIRT
+	toggleable_inventory += inv_box
+
+	inv_box = new /atom/movable/screen/inventory(null, src)
 	inv_box.name = "shoes"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "shoes"
@@ -352,6 +361,9 @@
 		if(H.w_uniform)
 			H.w_uniform.screen_loc = ui_iclothing
 			screenmob.client.screen += H.w_uniform
+		if(H.wear_shirt)
+			H.wear_shirt.screen_loc = ui_iclothing
+			screenmob.client.screen += H.wear_shirt
 		if(H.wear_suit)
 			H.wear_suit.screen_loc = ui_oclothing
 			screenmob.client.screen += H.wear_suit

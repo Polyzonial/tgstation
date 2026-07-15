@@ -103,6 +103,7 @@
 #define ui_ears "WEST+2:10,SOUTH+2:9"
 #define ui_neck "WEST:6,SOUTH+2:9"
 #define ui_head "WEST+1:8,SOUTH+3:11"
+#define ui_shirt "WEST+4:12,SOUTH+1:7"
 
 //Generic living
 #define ui_living_pull "EAST-1:28,CENTER-3:15"

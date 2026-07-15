@@ -28,47 +28,50 @@
 #define ITEM_SLOT_OCLOTHING (1<<0)
 /// Jumpsuit slot
 #define ITEM_SLOT_ICLOTHING (1<<1)
+/// Shirt slot
+#define ITEM_SLOT_SHIRT (1<<2)
 /// Glove slot
-#define ITEM_SLOT_GLOVES (1<<2)
+#define ITEM_SLOT_GLOVES (1<<3)
 /// Glasses slot
-#define ITEM_SLOT_EYES (1<<3)
+#define ITEM_SLOT_EYES (1<<4)
 /// Ear slot (radios, earmuffs)
-#define ITEM_SLOT_EARS (1<<4)
+#define ITEM_SLOT_EARS (1<<5)
 /// Mask slot
-#define ITEM_SLOT_MASK (1<<5)
+#define ITEM_SLOT_MASK (1<<6)
 /// Head slot (helmets, hats, etc.)
-#define ITEM_SLOT_HEAD (1<<6)
+#define ITEM_SLOT_HEAD (1<<7)
 /// Shoe slot
-#define ITEM_SLOT_FEET (1<<7)
+#define ITEM_SLOT_FEET (1<<8)
 /// ID slot
-#define ITEM_SLOT_ID (1<<8)
+#define ITEM_SLOT_ID (1<<9)
 /// Belt slot
-#define ITEM_SLOT_BELT (1<<9)
+#define ITEM_SLOT_BELT (1<<10)
 /// Back slot
-#define ITEM_SLOT_BACK (1<<10)
+#define ITEM_SLOT_BACK (1<<11)
 /// Dextrous simplemob "hands" (used for Drones and Dextrous Guardians)
-#define ITEM_SLOT_DEX_STORAGE (1<<11)
+#define ITEM_SLOT_DEX_STORAGE (1<<12)
 /// Neck slot (ties, bedsheets, scarves)
-#define ITEM_SLOT_NECK (1<<12)
+#define ITEM_SLOT_NECK (1<<13)
 /// A character's hand slots
-#define ITEM_SLOT_HANDS (1<<13)
+#define ITEM_SLOT_HANDS (1<<14)
 /// Suit Storage slot
-#define ITEM_SLOT_SUITSTORE (1<<14)
+#define ITEM_SLOT_SUITSTORE (1<<15)
 /// Left Pocket slot
-#define ITEM_SLOT_LPOCKET (1<<15)
+#define ITEM_SLOT_LPOCKET (1<<16)
 /// Right Pocket slot
-#define ITEM_SLOT_RPOCKET (1<<16)
+#define ITEM_SLOT_RPOCKET (1<<17)
 /// Handcuff slot
-#define ITEM_SLOT_HANDCUFFED (1<<17)
+#define ITEM_SLOT_HANDCUFFED (1<<18)
 /// Legcuff slot (bolas, beartraps)
-#define ITEM_SLOT_LEGCUFFED (1<<18)
+#define ITEM_SLOT_LEGCUFFED (1<<19)
 
 /// Total amount of slots
-#define SLOTS_AMT 19 // Keep this up to date!
+#define SLOTS_AMT 20 // Keep this up to date!
 
 ///Inventory slots that can be blacklisted by a species from being equipped into
 DEFINE_BITFIELD(no_equip_flags, list(
 	"EXOSUIT" = ITEM_SLOT_OCLOTHING,
+	"SHIRT" = ITEM_SLOT_SHIRT,
 	"JUMPSUIT" = ITEM_SLOT_ICLOTHING,
 	"GLOVES" = ITEM_SLOT_GLOVES,
 	"GLASSES" = ITEM_SLOT_EYES,
@@ -83,7 +86,7 @@ DEFINE_BITFIELD(no_equip_flags, list(
 //SLOT GROUP HELPERS
 #define ITEM_SLOT_POCKETS (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET)
 /// Slots that are physically on you
-#define ITEM_SLOT_ON_BODY (ITEM_SLOT_ICLOTHING | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_EYES | ITEM_SLOT_EARS | \
+#define ITEM_SLOT_ON_BODY (ITEM_SLOT_ICLOTHING | ITEM_SLOT_SHIRT | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_EYES | ITEM_SLOT_EARS | \
 	ITEM_SLOT_MASK | ITEM_SLOT_HEAD | ITEM_SLOT_FEET | ITEM_SLOT_ID | ITEM_SLOT_BELT | ITEM_SLOT_BACK | ITEM_SLOT_NECK )
 
 //Bit flags for the flags_inv variable, which determine when a piece of clothing hides another. IE a helmet hiding glasses.

@@ -157,6 +157,12 @@ const SLOTS: Record<
     image: 'inventory-uniform.png',
   },
 
+  shirt: {
+    displayName: 'shirt',
+    gridSpot: getGridSpotKey([2, 0]),
+    image: 'inventory-uniform.png',
+  },
+
   suit: {
     displayName: 'suit',
     gridSpot: getGridSpotKey([2, 2]),

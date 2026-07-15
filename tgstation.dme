@@ -4116,6 +4116,7 @@
 #include "code\modules\clothing\outfits\standard.dm"
 #include "code\modules\clothing\outfits\vr.dm"
 #include "code\modules\clothing\outfits\vv_outfit.dm"
+#include "code\modules\clothing\shirts\_shirts.dm"
 #include "code\modules\clothing\shoes\_shoes.dm"
 #include "code\modules\clothing\shoes\bananashoes.dm"
 #include "code\modules\clothing\shoes\boots.dm"
