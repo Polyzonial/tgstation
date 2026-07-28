@@ -62,6 +62,7 @@ There are several things that need to be remembered:
 		update_worn_belt()
 		update_worn_back()
 		update_worn_oversuit()
+		update_worn_shirt()
 		update_pockets()
 		update_worn_neck()
 		update_transform()
@@ -398,6 +399,30 @@ There are several things that need to be remembered:
 
 	apply_overlay(BELT_LAYER)
 
+/mob/living/carbon/human/update_worn_shirt()
+	remove_overlay(SUIT_LAYER)
+
+	if(client && hud_used)
+		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_OCLOTHING) + 1]
+		inv.update_icon()
+
+	if(w_shirt)
+		var/obj/item/worn_item = w_shirt
+		update_hud_w_shirt(worn_item)
+
+		if(HAS_TRAIT(worn_item, TRAIT_NO_WORN_ICON))
+			return
+
+		var/icon_file = DEFAULT_SUIT_FILE
+
+		var/mutable_appearance/suit_overlay = w_shirt.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file)
+		var/obj/item/bodypart/chest/my_chest = get_bodypart(BODY_ZONE_CHEST)
+		my_chest?.worn_suit_offset?.apply_offset(suit_overlay)
+		overlays_standing[SUIT_LAYER] = suit_overlay
+
+	apply_overlay(SUIT_LAYER)
+	check_body_shape(BODYSHAPE_DIGITIGRADE, ITEM_SLOT_OCLOTHING)
+
 /mob/living/carbon/human/update_worn_oversuit()
 	remove_overlay(SUIT_LAYER)
 
@@ -684,6 +709,12 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/proc/update_hud_s_store(obj/item/worn_item)
 	worn_item.screen_loc = ui_sstore1
 	if(client && hud_used?.hud_shown)
+		client.screen += worn_item
+	update_observer_view(worn_item,TRUE)
+
+/mob/living/carbon/human/proc/update_hud_w_shirt(obj/item/worn_item)
+	worn_item.screen_loc = ui_shirt
+	if((client && hud_used) && (hud_used.inventory_shown && hud_used.hud_shown))
 		client.screen += worn_item
 	update_observer_view(worn_item,TRUE)
 

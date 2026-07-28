@@ -186,6 +186,11 @@
 				return
 			w_uniform = equipping
 			update_worn_undersuit()
+		if(ITEM_SLOT_SHIRT)
+			if(w_shirt)
+				return
+			w_shirt = equipping
+			update_worn_shirt()
 		if(ITEM_SLOT_LPOCKET)
 			l_store = equipping
 			update_pockets()
@@ -237,6 +242,10 @@
 				dropItemToGround(wear_id)
 			if(belt && !can_equip(belt, ITEM_SLOT_BELT, TRUE, ignore_equipped = TRUE))
 				dropItemToGround(belt)
+	else if (item_dropping == w_shirt)
+		w_shirt = null
+		if(!QDELETED(src))
+			update_worn_shirt()
 	else if(item_dropping == gloves)
 		gloves = null
 		if(!QDELETED(src))

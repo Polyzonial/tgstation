@@ -684,6 +684,8 @@ GLOBAL_LIST_EMPTY(masked_leg_icons_cache)
 			return UNIFORM_LAYER
 		if(ITEM_SLOT_OCLOTHING)
 			return SUIT_LAYER
+		if(ITEM_SLOT_SHIRT)
+			return SUIT_LAYER
 		if(ITEM_SLOT_GLOVES)
 			return GLOVES_LAYER
 		if(ITEM_SLOT_FEET)

@@ -33,6 +33,8 @@
 		update_worn_shoes()
 	if(slot_flags & ITEM_SLOT_OCLOTHING)
 		update_worn_oversuit()
+	if(slot_flags & ITEM_SLOT_SHIRT)
+		update_worn_shirt()
 	if(slot_flags & ITEM_SLOT_ICLOTHING)
 		update_worn_undersuit()
 	if(slot_flags & ITEM_SLOT_SUITSTORE)
@@ -77,6 +79,9 @@
 
 ///Updates the oversuit overlay & HUD element.
 /mob/proc/update_worn_oversuit()
+	return
+
+/mob/proc/update_worn_shirt()
 	return
 
 ///Updates the undersuit/uniform overlay & HUD element.
