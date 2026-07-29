@@ -38,6 +38,8 @@
 			return gloves
 		if(ITEM_SLOT_FEET)
 			return shoes
+		if(ITEM_SLOT_SHIRT)
+			return w_shirt
 		if(ITEM_SLOT_OCLOTHING)
 			return wear_suit
 		if(ITEM_SLOT_ICLOTHING)
@@ -79,6 +81,9 @@
 	if(looking_for == w_uniform)
 		return ITEM_SLOT_ICLOTHING
 
+	if(looking_for == w_shirt)
+		return ITEM_SLOT_SHIRT
+
 	if(looking_for == r_store)
 		return ITEM_SLOT_RPOCKET
 
@@ -103,7 +108,8 @@
 		wear_id,
 		l_store,
 		r_store,
-		w_uniform
+		w_uniform,
+		w_shirt,
 		)
 
 /mob/living/carbon/human/proc/get_head_slots()

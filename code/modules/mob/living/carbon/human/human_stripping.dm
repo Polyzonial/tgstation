@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/shirt
 	key = STRIPPABLE_ITEM_SHIRT
-	item_slot = ITEM_SLOT_EARS
+	item_slot = ITEM_SLOT_SHIRT
 
 /datum/strippable_item/mob_item_slot/jumpsuit
 	key = STRIPPABLE_ITEM_JUMPSUIT

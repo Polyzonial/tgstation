@@ -6,7 +6,7 @@
 #define STRIPPABLE_ITEM_EYES "eyes"
 #define STRIPPABLE_ITEM_EARS "ears"
 #define STRIPPABLE_ITEM_JUMPSUIT "jumpsuit"
-#define STRIPPABLE_ITEM_SHIRT "shirt" //
+#define STRIPPABLE_ITEM_SHIRT "shirt" //REC13
 #define STRIPPABLE_ITEM_SUIT "suit"
 #define STRIPPABLE_ITEM_GLOVES "gloves"
 #define STRIPPABLE_ITEM_FEET "shoes"
