@@ -19,7 +19,7 @@
 /obj/item/clothing/shirt/color
 	name = "White shirt"
 	desc = "A Normal white shirt for testing"
-	icon = 'icons/mob/clothing/suits/costume.dmi'
+	icon = 'icons/obj/clothing/suits/costume.dmi'
 	worn_icon = 'icons/mob/clothing/suits/costume.dmi'
 	icon_state = "worn_out"
 	inhand_icon_state = null
